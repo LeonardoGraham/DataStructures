@@ -1,22 +1,14 @@
-﻿public class LinkedList<T>
-{
-    private class Node
-    {
-        public T Value { get; }
-        public Node? Next { get; }
+﻿namespace DataStructures;
 
-        public Node(T value, Node? next)
-        {
-            Value = value;
-            Next = next;
-        }
-    }
-    
-    private Node? _list;
+// Doubly-Linked List
+public class LinkedList<T>
+{
+    private LinkedListNode<T>? _list;
 
     public void Add(T value)
     {
-        var node = new Node(value, _list);
+        var node = new LinkedListNode<T>(value, _list);
+        if (_list != null) _list.Previous = node;
         _list = node;
     }
 
